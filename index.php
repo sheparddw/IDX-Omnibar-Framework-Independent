@@ -5,7 +5,6 @@
 	<title>Omnibar</title>
 	<link rel="stylesheet" href="awesomplete.css">
 	<link rel="stylesheet" href="style.css">
-	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="awesomplete.min.js"></script>
 	<script src="omnibar.js"></script>
 </head>

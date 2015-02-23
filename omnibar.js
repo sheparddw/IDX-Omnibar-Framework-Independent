@@ -2,27 +2,42 @@
 var idxUrl = 'http://YOURDOMAINHERE.idxbroker.com'
 
 //grab locationlist.json data (cities, counties, and zip codes)
-	$.get("locationlist.json", function (data) {
-		locationList = data;
-	});
-	$(document).ajaxComplete(function () {
-		var cities = [];
-		$(locationList.cities).each(function () {
-			cities.push(this.name);
+	var request = new XMLHttpRequest();
+request.open('GET', 'locationlist.json', true);
+request.onload = function() {
+  if (request.status >= 200 && request.status < 400) {
+    var locationList = JSON.parse(request.responseText);
+    var cities = [];
+		locationList.cities.forEach(function (a) {
+			cities.push(a.name);
 		});
 		var counties = [];
-		$(locationList.counties).each(function () {
-			counties.push(this.name);
-		});;
-		var zipcodes = [];
-		$(locationList.zipcodes).each(function () {
-			zipcodes.push(this.name);
-		});;
-		var allLocations = cities.concat(counties).concat(zipcodes);
-		var cleanLocations = [];
-		$.each(allLocations, function (i, el) {
-			if ($.inArray(el, cleanLocations) === -1) cleanLocations.push(el);
+		locationList.counties.forEach(function (a) {
+			counties.push(a.name);
 		});
+		var zipcodes = [];
+		locationList.zipcodes.forEach(function (a) {
+			zipcodes.push(a.name);
+		});
+		var allLocations = cities.concat(counties).concat(zipcodes);
+      //Finds if location is already on list and only includes 1
+      var cleanLocations;
+        function removeDuplicates(a) {
+            var seen = {};
+            var out = [];
+            var len = a.length;
+            var j = 0;
+            for(var i = 0; i < len; i++) {
+                 var item = a[i];
+                 if(seen[item] !== 1) {
+                       seen[item] = 1;
+                       out[j++] = item;
+                 }
+            }
+            return cleanLocations = out;
+        }
+        removeDuplicates(allLocations)
+      //Initialize Autocomplete of CCZs
 		new Awesomplete(document.querySelector('#omnibar')).list = cleanLocations;
         
 		document.querySelector('.omnibar').addEventListener('submit', function (event) {
@@ -53,7 +68,7 @@ var idxUrl = 'http://YOURDOMAINHERE.idxbroker.com'
 
 						var all_search = idxUrl + '/idx/results/listings';
 						var all_search_end = '&per=10&srt=prd';
-						var go_all = all_search + '&pt=' + jQuery('#search-property-type').val() + '&bd=' + jQuery('#search-beds').val() + '&tb=' + jQuery('#search-baths').val() + '&lp=' + jQuery('#search-min-price').val() + '&hp=' + jQuery('#search-max-price').val() + all_search_end;
+						var go_all = all_search + '&pt=' + /*jQuery('#search-property-type').val() + '&bd=' + jQuery('#search-beds').val() + '&tb=' + jQuery('#search-baths').val() + '&lp=' + jQuery('#search-min-price').val() + '&hp=' + jQuery('#search-max-price').val() +*/ all_search_end;
 
 						window.location = go_all;
 
@@ -104,8 +119,10 @@ var idxUrl = 'http://YOURDOMAINHERE.idxbroker.com'
 					isCounty()
 				}
 			}
-			
-
-
-		};
-	});
+			  
+      
+      
+  }
+}
+}
+request.send();

@@ -3,14 +3,10 @@
 
 <head>
 	<title>Omnibar</title>
-	<link rel="stylesheet" href="jquery-ui.css?ver=4.1">
+	<link rel="stylesheet" href="awesomplete.css">
 	<link rel="stylesheet" href="style.css">
 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
-	<script type='text/javascript' src='jquery/ui/core.min.js?ver=1.11.2'></script>
-	<script type='text/javascript' src='jquery/ui/widget.min.js?ver=1.11.2'></script>
-	<script type='text/javascript' src='jquery/ui/position.min.js?ver=1.11.2'></script>
-	<script type='text/javascript' src='jquery/ui/menu.min.js?ver=1.11.2'></script>
-	<script type='text/javascript' src='jquery/ui/autocomplete.min.js?ver=1.11.2'></script>
+    <script src="awesomplete.min.js"></script>
 	<script src="omnibar.js"></script>
 </head>
 

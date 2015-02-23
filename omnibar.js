@@ -1,8 +1,7 @@
 //Enter Your IDX domain here. (example: http://demo.idxbroker.com or http://search.ptdemo.com)
-var idxUrl = 'YOURDOMAINHERE.idxbroker.com'
+var idxUrl = 'http://YOURDOMAINHERE.idxbroker.com'
 
 //grab locationlist.json data (cities, counties, and zip codes)
-$(document).ready(function () {
 	$.get("locationlist.json", function (data) {
 		locationList = data;
 	});
@@ -24,9 +23,8 @@ $(document).ready(function () {
 		$.each(allLocations, function (i, el) {
 			if ($.inArray(el, cleanLocations) === -1) cleanLocations.push(el);
 		});
-		$("#omnibar").autocomplete({
-			source: cleanLocations
-		});
+		new Awesomplete(document.querySelector('#omnibar')).list = cleanLocations;
+        
 		document.querySelector('.omnibar').addEventListener('submit', function (event) {
 			event.preventDefault();
 
@@ -111,4 +109,3 @@ $(document).ready(function () {
 
 		};
 	});
-});

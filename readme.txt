@@ -1,5 +1,7 @@
 Note that this project is not supported by IDX Broker in any way.
 
+DO NOT contact IDX Broker for any support on this project
+
 This is an Omnibar for use with IDX Broker.
 
 You will need:
@@ -15,3 +17,5 @@ You can setup a cronjob so this script is run once a day if you wish. Avoid runn
 You can test the omnibar with the index.php file and potentially copy the source code of all that is necessary to integrate this into your website.
 The script, omnibar.js, grabs the locations from the locationlist file and compares the value entered in the omnibar to each of them. If no result is found, it searches for it as an MLS number unless spaces are found in the value. Then it is run as an address search.
 Feel free to improve upon this code as this was merely a proof of concept and not intended to be optimized and easy to integrate into a website. This could easily be made into a WordPress plugin.
+
+Docs for API used in this project: http://middleware.idxbroker.com/docs/api/overview.php

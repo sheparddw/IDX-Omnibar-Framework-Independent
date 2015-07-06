@@ -1,6 +1,6 @@
 <?php
 
-$apiKey = 'YOUR-API-KEY-HERE';
+$apiKey = 'YOURAPIKEYHERE';
 
 function idx_api_call($url, $apiKey){
 	$method = 'GET';
@@ -30,7 +30,7 @@ $locations = 'idxOmnibar({'.$cities.$counties.$zipcodes.'})';
 
 file_put_contents ( 'assets/js/locationlist.json' , $locations );
 
-echo "Your call has been made. To see the result, navigate to <a href='locationlist.json'>locationlist.json</a>"
+echo "Your call has been made. To see the result, navigate to <a href='assets/js/locationlist.json'>locationlist.json</a>"
 
 
 		?>

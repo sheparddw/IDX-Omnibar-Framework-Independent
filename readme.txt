@@ -10,7 +10,7 @@ To get started:
  * Download the files and enter your IDX Broker account's API key at the top of getlocations.php
  * Enter your domain in the instructed place of the assets/js/idx-omnibar.js file
  * Copy the desired widget of the two on index.php - you may need to update the URLs of the referenced stylesheets and scripts depending upon where you place them within your website's directory
- * Visit getloations.php in your browser to manually update the locationlist.json file
+ * Visit getlocations.php in your browser to update the locationlist.json file
 
 
  How this works:
